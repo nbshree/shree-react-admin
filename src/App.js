@@ -12,7 +12,6 @@ import {BrowserRouter as Router, browserHistory, Redirect, Route, withRouter, Sw
 // import {Switch} from "react-router-dom";
 class App extends Component {
     componentDidMount() {
-        console.log(this.props.location);
         store.subscribe(() => {
             this.jumpLogin()
         }) //订阅Redux的状态

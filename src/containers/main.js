@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 class Main extends Component {
     constructor(props) {
         super(props);
-        console.log(this.props.loginType)
+        // console.log(this.props.loginType)
     }
 
     // componentDidMount() {

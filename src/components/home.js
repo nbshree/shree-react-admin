@@ -11,9 +11,9 @@ export default class Home extends Component {
 			<div>
 				<p>Home</p>
 				<input/>
-				<Test>
-					{/*<Game/>*/}
-				</Test>
+				{/*<Test>*/}
+				{/*	/!*<Game/>*!/*/}
+				{/*</Test>*/}
 				{/*<Header source="http://localhost:3000/data/swiper"/>*/}
 				{/*<Otherapp source="http://localhost:3000/data/otherapp"/>*/}
 				{/*<Spike source="http://localhost:3000/data/spike"/>*/}

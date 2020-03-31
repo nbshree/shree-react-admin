@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 // import Search from 'search.jsx';
-import {Test} from './test.js';
+import Test from './test.js';
 // const Test = require('./test.js');
 // import Header from 'header.jsx';
 // import Otherapp from 'otherapp.jsx';

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {Route, Redirect} from 'react-router-dom'
-import Game from './game';
 
 class Test extends Component {
 	constructor(props) {
