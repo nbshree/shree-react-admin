@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Main from '@/page/main';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Route, Redirect} from 'react-router-dom'
@@ -16,10 +17,11 @@ import store from "./newstore/index";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 ReactDOM.render(
-    // <Provider store={store}>
-    //     <Login/>
-    // </Provider>,
-    <Login/>,
+    <Provider store={store}>
+        {/*<Login/>*/}
+        <Main/>
+    </Provider>,
+    // <Login/>,
     document.getElementById('root')
 );
 

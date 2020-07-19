@@ -40,7 +40,7 @@ class App extends Component {
                             <Nav/>
                             {/*<div style={{float:"left"}}>{this.props.children}</div>*/}
                             <div style={{float: "left"}}>
-                                <Switch>
+                                <Route>
                                     <Route path="/" exact component={Home}/>
                                     {/*<Route path='/abc/:id' children={({ match ,location }) => (*/}
                                     {/*    <div>*/}
@@ -49,7 +49,7 @@ class App extends Component {
                                     <Route path="/test/:id" component={Test}/>
                                     <Route path="/test" component={Test}/>
                                     <Route path="/game" component={Game}/>
-                                </Switch>
+                                </Route>
                             </div>
                         </div>
                     </Router>

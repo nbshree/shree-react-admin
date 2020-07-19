@@ -1,5 +1,6 @@
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux';
 import login from './reduce/login';
+import user from './reduce/login';
 import thunk from 'redux-thunk'
 
 const composeEnhancers =   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -7,6 +8,6 @@ const composeEnhancers =   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
 
 const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(combineReducers({
-    login
+    login,user
 }),enhancer);
 export default store;

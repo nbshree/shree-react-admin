@@ -1,27 +1,24 @@
 import {LOGIN, LOGOUT} from "./actionType";
 import httpAjax from '@/utils/httpAjax';
 
-export const login = ({username,password}) => {
+export const login = ({username, password}) => {
     return (dispatch) => {
         localStorage.setItem("login", true);
         dispatch({
             type: 'request login'
         })
-        // localStorage.setItem("login", loginType);
         httpAjax.get('/open/login', {
             params: {
                 userName: username,
                 userPwd: password
             }
         }).then(response => {
-            console.log(response)
+            localStorage.setItem("JSESSIONID", response.data.sessionId);
             if (response.status === 1) {
                 dispatch({
                     type: 'receive login',
                     data: response.data
                 })
-                // loginAuth.setSession(JSON.stringify(response.data));
-                // loginAuth.setSessionId(response.data.sessionId);
             }
         }).catch(error => {
         });
@@ -30,20 +27,34 @@ export const login = ({username,password}) => {
 };
 export const logOut = () => {
     return (dispatch) => {
-        localStorage.setItem("login", true);
         dispatch({
-            type: 'request login'
+            type: 'request loginOut'
         })
-        // localStorage.setItem("login", loginType);
-        httpAjax.get('/open/loginOut', {}).then(response => {
+        httpAjax.get('/open/logoff', {}).then(response => {
+            console.log(response)
+            if (response.status === 1) {
+                localStorage.removeItem("JSESSIONID");
+                dispatch({
+                    type: 'receive loginOut'
+                })
+            }
+        }).catch(error => {
+        });
+
+    }
+};
+export const getInfo = () => {
+    return (dispatch) => {
+        dispatch({
+            type: 'request getInfo'
+        })
+        httpAjax.get('/system/user/info/load', {params:{id: 5447188719000879104}}).then(response => {
             console.log(response)
             if (response.status === 1) {
                 dispatch({
-                    type: 'receive login',
+                    type: 'receive getInfo',
                     data: response.data
                 })
-                // loginAuth.setSession(JSON.stringify(response.data));
-                // loginAuth.setSessionId(response.data.sessionId);
             }
         }).catch(error => {
         });
