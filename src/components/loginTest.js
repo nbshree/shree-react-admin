@@ -4,7 +4,7 @@ import {Redirect} from 'react-router-dom'
 const loginTest =  (props) => {
     const login = ()=>{
         props.history.push('/');
-        props.onClick();
+        props.onClick("admin","qwe123");
     };
     if(localStorage.getItem("login")==="true"){
         // console.log(props.history)

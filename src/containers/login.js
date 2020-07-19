@@ -1,13 +1,13 @@
 import LoginTest from "../components/loginTest";
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {login} from "../store/action";
+import {login} from "../newstore/action";
 
 // function mapStateToProps(state) {
 //     return {toLogin:state.login};
 // }
 const mapDispatchToProps = (dispatch) => ({
-    onClick: () => dispatch(login(true)),
+    onClick: (username,password) => dispatch(login({username,password})),
 });
 
 export default connect(

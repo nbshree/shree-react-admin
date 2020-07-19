@@ -5,31 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {Route, Redirect} from 'react-router-dom'
 import Game from '../src/components/game';
-import Login from '../src/containers/login';
-import Main from '../src/containers/main';
+import Login from '../src/page/login';
+// import Main from '../src/containers/main';
+// import Login from '../src/containers/main';
 import Test from '../src/components/test';
 import Home from "./components/home";
 import {Provider} from 'react-redux'
-import store from "./store/index";
+import store from "./newstore/index";
+
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 ReactDOM.render(
-    <Provider store={store}>
-        {/*<Router>*/}
-        {/*    <Route path="/" component={Main}/>*/}
-        {/*</Router>*/}
-        <Main/>
-        {/*<App>*/}
-        {/*    <Route path="/" exact component={Home}/>*/}
-        {/*    /!*<Route path='/abc/:id' children={({ match ,location }) => (*!/*/}
-        {/*    /!*    <div>*!/*/}
-        {/*    /!*        {match ? <Home id={match.params.id} location={location}/>:<Test id={match.params.id} location={{location}}/> }*!/*/}
-        {/*    /!*        </div>)}/>*!/*/}
-        {/*    <Route path="/test" component={Test}/>*/}
-        {/*    <Route path="/game" component={Game}/>*/}
-        {/*    /!*<Redirect from="/test" to="/game"/>*!/*/}
-        {/*</App>*/}
-    </Provider>,
+    // <Provider store={store}>
+    //     <Login/>
+    // </Provider>,
+    <Login/>,
     document.getElementById('root')
 );
 

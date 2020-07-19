@@ -49,6 +49,8 @@ const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
@@ -289,6 +291,7 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        '@':path.join(__dirname, '../src'),
         '@components':path.join(__dirname, '../src/components'),
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -349,6 +352,36 @@ module.exports = function(webpackEnv) {
           // match the requirements. When no loader matches it will fall
           // back to the "file" loader at the end of the loader list.
           oneOf: [
+              {
+                  test: lessRegex,
+                  exclude: lessModuleRegex,
+                  use: getStyleLoaders(
+                      {
+                          importLoaders: 2,
+                          sourceMap: isEnvProduction && shouldUseSourceMap,
+                      },
+                      'less-loader'
+                  ),
+                  // Don't consider CSS imports dead code even if the
+                  // containing package claims to have no side effects.
+                  // Remove this when webpack adds a warning or an error for this.
+                  // See https://github.com/webpack/webpack/issues/6571
+                  sideEffects: true,
+              },
+// Adds support for CSS Modules, but using SASS
+// using the extension .module.scss or .module.sass
+              {
+                  test: lessModuleRegex,
+                  use: getStyleLoaders(
+                      {
+                          importLoaders: 2,
+                          sourceMap: isEnvProduction && shouldUseSourceMap,
+                          modules: true,
+                          getLocalIdent: getCSSModuleLocalIdent,
+                      },
+                      'less-loader'
+                  ),
+              },
             // "url" loader works like "file" loader except that it embeds assets
             // smaller than specified limit in bytes as data URLs to avoid requests.
             // A missing `test` is equivalent to a match.

@@ -4,7 +4,7 @@ import Game from '../src/components/game';
 import Test from '../src/components/test';
 import Home from '../src/components/home';
 import Nav from '../src/components/nav';
-import {logOut} from "./store/action";
+import {logOut} from "./newstore/action";
 import {connect} from 'react-redux';
 import store from "./store/index";
 import {BrowserRouter as Router, browserHistory, Redirect, Route, withRouter, Switch} from 'react-router-dom';
