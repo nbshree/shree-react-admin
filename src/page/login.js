@@ -8,8 +8,12 @@ import {
 import '@/style/login.less'
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = (props) => {
+    console.log(props)
+
+    let history = useHistory();
     const [switchLeft, setSwitchLeft] = useState(false);
 
     const [notforget, setNotforget] = useState(true);
@@ -44,6 +48,7 @@ const Login = (props) => {
                         props.dispatch(logOut())
                     }}>退出
                     </button>
+                    <button onClick={()=>{history.push("/home");}}>跳转</button>
                 </div>
             );
         }

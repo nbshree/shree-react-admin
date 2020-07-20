@@ -1,5 +1,5 @@
 import React from "react";
-import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch, useHistory  } from "react-router-dom";
 import Nav from "../components/nav";
 import Home from "../components/home";
 import Test from "../components/test";
@@ -15,11 +15,12 @@ const Layout=(props)=>{
             return (
                 <div>
                     <div><h5>我是头</h5></div>
-                    <Router>
+                    {/*<Router>*/}
                         <div className="App">
                             <Nav/>
                             <div style={{float: "left"}}>
-                                <Switch>
+                                <Route>
+                                    {/*<IndexRoute component={Home}/>*/}
                                     <Route path="/" exact component={Home}/>
                                     {/*<Route path='/abc/:id' children={({ match ,location }) => (*/}
                                     {/*    <div>*/}
@@ -28,10 +29,10 @@ const Layout=(props)=>{
                                     <Route path="/test/:id" component={Test}/>
                                     <Route path="/test" component={Test}/>
                                     <Route path="/game" component={Game}/>
-                                </Switch>
+                                </Route>
                             </div>
                         </div>
-                    </Router>
+                    {/*</Router>*/}
                     <button onClick={() => {
                         props.dispatch(logOut())
                     }}>退出帐号</button>
